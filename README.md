@@ -83,8 +83,6 @@ sixi-scanner scan --target chat --url http://localhost:8000/api/chat --min-sever
 * On `basic`: direct prompt leakage is reduced, but privileged tool actions and multi-turn cap splits remain vulnerable.
 * On `hardened`: input/output guards plus tool-boundary checks enforce recipient, taint-relay, and cumulative session refund caps.
 
-For multi-transport agent connectivity across REST, MCP, A2A, WebSockets, and Browser CDP, see **[redwire](https://github.com/radeksixi/redwire)**.
-
 ## The Agent Runtime blocker
 
 **Agent Runtime provisions Python 3.14 and does not honour the project's pinned environment. Every
