@@ -3,7 +3,7 @@ name = "adk-demo-target"
 version = "0.1.0"
 description = "Atlas — a deliberately attackable ADK agent for AI red-teaming"
 authors = [
-    {name = "Your Name", email = "your@email.com"},
+    {name = "Radek (Sixi)", email = "contact@sixi.ai"},
 ]
 
 

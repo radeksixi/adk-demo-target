@@ -287,3 +287,4 @@ tempCodeRunnerFile.py
 
 # Written by `agents-cli deploy`: it names the project and engine a deploy landed in.
 deployment_metadata.json
+logs/
