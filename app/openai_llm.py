@@ -211,6 +211,10 @@ class OpenAICompatLlm(BaseLlm):
         message = choices[0].get("message") or {}
         parts: list[types.Part] = []
         text = message.get("content") or ""
+        if "</think>" in text:
+            # Some local reasoning models emit stray scratch text followed by </think>
+            # even with reasoning_effort="none"; keep only the final visible reply.
+            text = text.rsplit("</think>", 1)[-1].strip()
         if text:
             parts.append(types.Part(text=text))
 

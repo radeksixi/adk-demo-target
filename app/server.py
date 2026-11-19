@@ -561,22 +561,25 @@ def create_app(
             )
 
         part_key = "kind" if method == "message/send" else "type"
+        result_obj: dict[str, Any] = {
+            "id": out.session_id,
+            "contextId": out.session_id,
+            "status": {
+                "state": "completed",
+                "message": {
+                    "role": "agent",
+                    "parts": [{part_key: "text", "text": out.reply}],
+                },
+            },
+            "tool_calls": out.tool_calls,
+        }
+        if method == "message/send":
+            result_obj["kind"] = "task"
         return JSONResponse(
             {
                 "jsonrpc": "2.0",
                 "id": req_id,
-                "result": {
-                    "id": out.session_id,
-                    "contextId": out.session_id,
-                    "status": {
-                        "state": "completed",
-                        "message": {
-                            "role": "agent",
-                            "parts": [{part_key: "text", "text": out.reply}],
-                        },
-                    },
-                    "tool_calls": out.tool_calls,
-                },
+                "result": result_obj,
             }
         )
 
